@@ -26,13 +26,12 @@
     <compile.version>1.7</compile.version>
     <jdk.version>1.7</jdk.version>
     <plugin.compiler.version>3.1</plugin.compiler.version>
-    <!--plugin Mavin-->
+    <!--plugin Maven-->
     <maven.plugin.version>2.7</maven.plugin.version>
     <maven.filter.version>1.3</maven.filter.version>
     <maven.pmd.version>3.5</maven.pmd.version>
     <!--plugin Tomcat-->
     <tomcat.plugin.version>2.2</tomcat.plugin.version>
-
   </properties>
 
   <dependencies>

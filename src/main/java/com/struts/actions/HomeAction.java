@@ -16,7 +16,7 @@ public class HomeAction extends ActionSupport {
   @Action(
     value = "home",
     results = {
-      @Result(name = SUCCESS, location = "views/home.jsp")
+      @Result(name = SUCCESS, type="tiles", location = "/home.tiles")
     }
   )
   public String execute() {

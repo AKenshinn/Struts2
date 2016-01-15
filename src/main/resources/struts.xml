@@ -4,26 +4,32 @@
 "http://struts.apache.org/dtds/struts-2.0.dtd">
 
 <struts>
+	<constant name="struts.devMode" value="true" />
+	<constant name="struts.convention.default.parent.package"
+			value="default"></constant>
+	<constant name="struts.ui.theme" value="css_xhtml"></constant>
+	<constant name="struts.custom.i18n.resources" value="MessageResources" />
+	<constant name="struts.i18n.encoding" value="UTF-8" />
 
-		<constant name="struts.devMode" value="true" />
-		<constant name="struts.convention.default.parent.package"
-				value="default"></constant>
-		<constant name="struts.ui.theme" value="css_xhtml"></constant>
-		<constant name="struts.custom.i18n.resources" value="MessageResources" />
-		<constant name="struts.i18n.encoding" value="UTF-8" />
-
-		<package name="default" namespace="/" extends="struts-default">
-
-				<interceptors>
-						<interceptor name="logging"
-								class="com.struts.interceptors.LoggingInterceptor" />
-						
-						<interceptor-stack name="loggingStack">
-								<interceptor-ref name="logging" />
-								<interceptor-ref name="defaultStack" />
-						</interceptor-stack>
-				</interceptors>
-
-		</package>
+	<package name="default" namespace="/" extends="struts-default">
+		
+		<!-- set result type for using Tiles -->
+		<result-types>
+			<result-type name="tiles" class="org.apache.struts2.views.tiles.TilesResult"></result-type>
+		</result-types>
+		
+		<interceptors>
+			<interceptor name="logging"
+					class="com.struts.interceptors.LoggingInterceptor" />
+			
+			<interceptor-stack name="loggingStack">
+					<interceptor-ref name="logging" />
+					<interceptor-ref name="defaultStack" />
+			</interceptor-stack>
+		</interceptors>
+		
+		
+				
+	</package>
 
 </struts>

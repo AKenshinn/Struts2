@@ -1,9 +1,12 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="s" uri="/struts-tags"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles" %>
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Index Page</title>
+	<title>
+		<tiles:insertAttribute name="title" ignore="true"/>
+	</title>
 	<!-- jQuery -->
 	<script type="text/javascript" src="./assets/jQuery.min.js"></script>
 	<!-- Bootstrap -->
@@ -13,13 +16,8 @@
 <body>
 	
 	<div class="container">
-		<div class="row">
-			<div class="col-sm-12">
-				<h1 class="text-center">This is index.jsp</h1>
-			</div>
-		</div>
+		<tiles:insertAttribute name="content" ignore="false" />
 	</div>
 	
 </body>
 </html>
-
