@@ -41,6 +41,7 @@
       <groupId>javax.servlet</groupId>
       <artifactId>servlet-api</artifactId>
       <version>${servlet.api.version}</version>
+      <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>javax.servlet</groupId>
@@ -90,7 +91,7 @@
   </dependencies>
 
   <build>
-    <finalName>${project.name}</finalName>
+    <finalName>${project.artifactId}</finalName>
     <plugins>
       <!--resources-->
       <plugin>
