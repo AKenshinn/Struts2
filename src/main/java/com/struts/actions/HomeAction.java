@@ -2,15 +2,15 @@ package com.struts.actions;
 
 import com.opensymphony.xwork2.ActionSupport;
 import org.apache.struts2.convention.annotation.Action;
+import org.apache.struts2.convention.annotation.InterceptorRef;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.Result;
 import org.apache.struts2.convention.annotation.ResultPath;
 
-/**
- * Created by Kenshinn on 1/15/2016 AD.
- */
+@SuppressWarnings("serial")
 @Namespace("/")
 @ResultPath(value = "/")
+@InterceptorRef(value = "loggingStack")
 public class HomeAction extends ActionSupport {
 
   @Action(
@@ -20,7 +20,6 @@ public class HomeAction extends ActionSupport {
     }
   )
   public String execute() {
-    System.out.println("Action: /home");
     return SUCCESS;
   }
 
