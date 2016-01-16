@@ -12,7 +12,6 @@
 	<constant name="struts.i18n.encoding" value="UTF-8" />
 
 	<package name="default" namespace="/" extends="struts-default">
-		
 		<!-- set result type for using Tiles -->
 		<result-types>
 			<result-type name="tiles" class="org.apache.struts2.views.tiles.TilesResult"></result-type>
@@ -27,9 +26,6 @@
 					<interceptor-ref name="defaultStack" />
 			</interceptor-stack>
 		</interceptors>
-		
-		
-				
 	</package>
 
 </struts>

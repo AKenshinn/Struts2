@@ -21,6 +21,12 @@
 		<put-attribute name="content" value="/views/home.jsp" />
 	</definition>
 	
+	<!-- student -->
+	<definition name="/student.tiles" extends="layout">
+		<put-attribute name="title" value="Student Page"/>
+		<put-attribute name="content" value="/views/student.jsp" />
+	</definition>
+	
 	
 	
 	
