@@ -1,10 +1,9 @@
 Struts2
 =======
-	Example project of Struts2 + Hibernate + Maven.
+	Example project of Struts2 + Hibernate(MySQL) + Maven.
 
-Hibernate Configuration
+Hibernate(MySQL) Configuration
 -----------------------
-	create database using name "struts_db" 
-		or
-	change hibernate.connection.url in hibernate.cfg.xml to use your database
+	* Create database using name "struts_db"
+	* Change MySQL username and password to your MySQL configuration
 	

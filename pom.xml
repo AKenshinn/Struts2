@@ -32,6 +32,17 @@
     <maven.pmd.version>3.5</maven.pmd.version>
     <!--plugin Tomcat-->
     <tomcat.plugin.version>2.2</tomcat.plugin.version>
+    <!-- Database Config -->
+    <database.driverClass>com.mysql.jdbc.Driver</database.driverClass>
+    <database.url>jdbc:mysql://localhost:3306/struts_db</database.url>
+    <database.username>root</database.username>
+    <database.password>root</database.password>
+    <!-- Others -->
+    <javassist.version>3.12.1.GA</javassist.version>
+    <commons.lang.version>3.1</commons.lang.version>
+    <!-- Plugin -->
+    <mysql.connector.version>5.1.25</mysql.connector.version>
+    <plugin.sql.version>1.5</plugin.sql.version>
   </properties>
 
   <dependencies>
@@ -159,6 +170,59 @@
           <excludeRoots>
             <excludeRoot>target/generated-sources/stubs</excludeRoot>
           </excludeRoots>
+        </configuration>
+      </plugin>
+      <!-- Hibernate plugin read hibernate configuration and generate create script -->
+      <plugin>
+        <groupId>de.juplo</groupId>
+        <artifactId>hibernate4-maven-plugin</artifactId>
+        <version>1.1.0</version>
+        <executions>
+          <execution>
+            <goals>
+              <goal>export</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <hibernateDialect>org.hibernate.dialect.MySQLDialect</hibernateDialect>
+          <hibernateConfig>${project.basedir}/src/main/resources/hibernate.cfg.xml</hibernateConfig>
+          <outputFile>${project.basedir}/src/main/resources/scripts/create-schema.sql</outputFile>
+          <target>SCRIPT</target>
+          <type>BOTH</type>
+        </configuration>
+        <dependencies>
+          <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>${mysql.version}</version>
+          </dependency>
+        </dependencies>
+      </plugin>
+      <!-- SQL plugin connect to database and Executes SQL scripts from files or inline. -->
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>sql-maven-plugin</artifactId>
+        <version>1.5</version>
+        <dependencies>
+          <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>${mysql.version}</version>
+          </dependency>
+        </dependencies>
+        <configuration>
+          <encoding>UTF-8</encoding>
+          <driver>${database.driverClass}</driver>
+          <url>${database.url}</url>
+          <username>${database.username}</username>
+          <password>${database.password}</password>
+          <autocommit>true</autocommit>
+          <sqlCommand></sqlCommand>
+          <srcFiles>
+            <srcFile>${project.basedir}/src/main/resources/scripts/create-schema.sql</srcFile>
+            <srcFile>${project.basedir}/src/main/resources/scripts/init-data.sql</srcFile>
+          </srcFiles>
         </configuration>
       </plugin>
     </plugins>
