@@ -12,13 +12,10 @@ import org.apache.struts2.convention.annotation.ResultPath;
 @ResultPath(value = "/")
 @InterceptorRef(value = "loggingStack")
 public class HomeAction extends ActionSupport {
-
-  @Action(
-    value = "home",
-    results = {
-      @Result(name = SUCCESS, type="tiles", location = "/home.tiles")
-    }
-  )
+	
+  @Action(value = "home", results = {
+  		@Result(name = SUCCESS, type="tiles", location = "/home.tiles")
+  })
   public String execute() {
     return SUCCESS;
   }
