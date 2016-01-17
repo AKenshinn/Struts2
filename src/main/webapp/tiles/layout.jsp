@@ -12,6 +12,8 @@
 	<!-- Bootstrap -->
 	<script type="text/javascript" src="./assets/bootstrap/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" href="./assets/bootstrap/css/bootstrap.min.css"/>
+	<!-- Font Awesome -->
+	<link rel="stylesheet" href="./assets/font-awesome/css/font-awesome.min.css"/>
 </head>
 <body>
 	

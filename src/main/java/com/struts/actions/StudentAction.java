@@ -20,13 +20,13 @@ import com.struts.entities.Student;
 
 @SuppressWarnings({"serial", "unchecked"})
 @Namespace("/")
-@ResultPath("/student")
+@ResultPath("/")
 @InterceptorRef(value = "loggingStack")
 public class StudentAction extends ActionSupport {
 	
 	private SessionFactory sessionFactory;
 	
-	private Student student;
+	private Student student = new Student();
 	
 	private List<Student> students = new ArrayList<Student>();
 	
@@ -54,6 +54,37 @@ public class StudentAction extends ActionSupport {
 	public void setStudents(List<Student> students) {
 		this.students = students;
 	}
+	
+	@Action(value = "save", results = {
+	    @Result(name = "input", location = "/student.jsp"),
+	    @Result(name = "success", type = "redirectAction", location = "student")
+	})
+  public String createOrUpdate() {
+    Session session = getSessionFactory().openSession();
+    session.getTransaction().begin();
+  	session.saveOrUpdate(this.student);
+    session.getTransaction().commit();
+    session.close();
+
+    return SUCCESS;
+    
+  }
+	
+	@Action(value = "delete", results = {
+			@Result(name = "input", location = "/student.jsp"),
+			@Result(name = "success", location = "student", type = "redirectAction")
+  })
+  public String delete() {
+    Session session = getSessionFactory().openSession();
+    session.getTransaction().begin();
+    Student result = (Student) session.get(Student.class, this.getStudent().getId());
+    session.delete(result);
+    session.getTransaction().commit();
+    session.close();
+
+    return "success";
+    
+  }
 	
 	public void findAll() {
     Session session = getSessionFactory().openSession();
